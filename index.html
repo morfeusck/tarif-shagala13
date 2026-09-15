@@ -1,0 +1,192 @@
+<!doctype html><html lang="ru"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏢</text></svg>">
+<title>Тариф Эталон Шагала 13</title></head><body>
+<style>
+:root{--bg:#f7f7f5;--surface:#ffffff;--ink:#0b0b0b;--ink2:#52514e;--muted:#8a8984;--line:#e4e3df;
+ --c1:#2a78d6;--c2:#eb6834;--c3:#1baf7a;--c4:#eda100;--node:#3a3a38;}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#141413;--surface:#1a1a19;--ink:#fff;--ink2:#c3c2b7;--muted:#8a8984;--line:#2e2e2c;--c1:#3987e5;--c2:#d95926;--c3:#199e70;--c4:#c98500;--node:#d9d8d2;}}
+:root[data-theme="dark"]{--bg:#141413;--surface:#1a1a19;--ink:#fff;--ink2:#c3c2b7;--muted:#8a8984;--line:#2e2e2c;--c1:#3987e5;--c2:#d95926;--c3:#199e70;--c4:#c98500;--node:#d9d8d2;}
+body{background:var(--bg);color:var(--ink);font:14px/1.45 -apple-system,"Segoe UI",Roboto,Arial,sans-serif;margin:0;padding-block:24px;padding-inline:20px}
+.wrap{max-width:1180px;margin:0 auto}
+h1{font-size:22px;margin:0 0 4px;font-weight:650;letter-spacing:-.01em}
+.sub{color:var(--ink2);margin:0 0 16px;font-size:14px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
+button{border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:7px 12px;border-radius:8px;font-size:13px;cursor:pointer}
+button[aria-pressed="true"]{border-color:var(--ink);font-weight:600}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;overflow-x:auto}
+svg{display:block;min-width:1000px;width:100%;height:auto}
+.link{fill:none;opacity:.42;transition:opacity .15s}
+.link:hover,.link.hl{opacity:.85}
+.node rect{fill:var(--node)}
+.lbl{font-size:11.5px;fill:var(--ink);paint-order:stroke;stroke:var(--surface);stroke-width:3px;stroke-linejoin:round}
+.lbl .v{fill:var(--ink2)}
+.tip{position:fixed;pointer-events:none;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:12.5px;box-shadow:0 4px 16px rgba(0,0,0,.12);display:none;max-width:320px;z-index:5}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--ink2);margin-top:10px}
+.legend span i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:6px}
+.kpi{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+.kpi div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px;min-width:150px}
+.kpi b{display:block;font-size:20px;font-weight:650}
+.kpi small{color:var(--ink2)}
+details{margin-top:16px;color:var(--ink2);font-size:13px}
+table{border-collapse:collapse;font-size:12.5px;margin-top:8px;width:100%}
+td,th{border-bottom:1px solid var(--line);padding:4px 8px;text-align:left}
+td:last-child,th:last-child{text-align:right}
+.note{color:var(--muted);font-size:12px;margin-top:10px}
+</style>
+<div class="wrap">
+<h1>Куда уходит плата собственника: тариф ООО «УЭН «Эталон»</h1>
+<p class="sub">наб. Марка Шагала, 13 · решение ОСС от 28.01.2026 (вопросы 6, 7, 9, 10) · руб. с 1 м² в месяц, с НДС</p>
+<div class="row" role="group" aria-label="Тип помещения">
+  <button id="bFlat" aria-pressed="true">Квартира / нежилое</button>
+  <button id="bPark" aria-pressed="false">Машино-место / кладовая</button>
+  <span style="color:var(--ink2);font-size:12.5px;margin-left:6px">наведите на поток — подробности и сумма по дому в месяц</span>
+</div>
+<div class="kpi" id="kpi"></div>
+<div class="card"><svg id="s" viewBox="0 0 1300 900" role="img" aria-label="Санкей-диаграмма распределения тарифа"></svg>
+<div class="legend"><span><i style="background:var(--c1)"></i>Содержание и текущий ремонт (ОСС, вопрос 6)</span><span><i style="background:var(--c2)"></i>Охрана (вопрос 7)</span><span><i style="background:var(--c3)"></i>Строительный мусор, 24 мес. (вопрос 9)</span><span><i style="background:var(--c4)"></i>«Умный дом» (вопрос 10)</span></div>
+</div>
+<details><summary>Таблица данных</summary><table id="tbl"></table></details>
+<p class="note">Источник: приложения № 2, 3, 5, 6 к протоколу ОСС № 1 от 28.01.2026. Суммы «по дому» — начисления с жилых, нежилых, машино-мест и кладовых по расчёту УК. Для сравнения: до решения ОСС тариф содержания составлял 110 руб/м², городская ставка Москвы на 2026 г. для дома с лифтом — 52,89 руб/м².</p>
+</div>
+<div class="tip" id="tip"></div>
+<script>
+// [section, line, flatValue, parkValue, houseRubMonth]
+const S = {
+ c:'Содержание и текущий ремонт', o:'Охрана', m:'Строительный мусор', u:'«Умный дом»'
+};
+const sections = [
+ ['s1','Содержание помещений МОП','c',42.40,354.86],
+ ['s2','Текущий ремонт','c',18.94,18.94],
+ ['s3','Инженерные системы','c',36.40,36.40],
+ ['s4','Аварийное обслуживание','c',2.65,2.65],
+ ['s5','Слаботочные системы, доступ','c',18.64,18.64],
+ ['s6','Земельный участок, МАФ','c',31.23,31.23],
+ ['s7','Управление домом','c',9.74,9.74],
+ ['so','Охрана — посты ЧОО','o',42.98,229.99],
+ ['sm','Вывоз строительного мусора','m',22.31,0],
+ ['su','Умный дом','u',7.08,7.08],
+];
+const lines = [
+ ['s1','Уборка подъездов, лифтов, окон (8 строк)',11.74,11.74,236929],
+ ['s1','Уход за растениями в холлах',3.33,3.33,67079],
+ ['s1','Мойка остекления фасада 1 р/год',6.00,6.00,120916],
+ ['s1','Ремонт отделки фасада 1 р/год',4.74,4.74,95439],
+ ['s1','ТО электросетей, УЗО/АВР',6.54,6.54,131820],
+ ['s1','Окна и двери МОП',2.63,2.63,53022],
+ ['s1','Техэтажи, кровля, водосток, вентканалы, осмотры',5.66,5.66,114526],
+ ['s1','ЦО/ХГВС сезонные работы, дератизация',1.76,1.76,35359],
+ ['s1','Мехуборка паркинга (только м/м)',0,312.46,384982],
+ ['s2','Фундамент, стены, крыша',7.63,7.63,153781],
+ ['s2','Двери, лестницы, козырьки',5.26,5.26,106018],
+ ['s2','Внутренняя отделка МОП',6.05,6.05,121950],
+ ['s3','Лифты',11.70,11.70,235787],
+ ['s3','Общеобменная вентиляция',8.45,8.45,170252],
+ ['s3','Противопожарная защита',4.82,4.82,97136],
+ ['s3','ТО СКС (кабельные сети)',3.31,3.31,66705],
+ ['s3','Газоанализаторы паркинга',2.41,2.41,48510],
+ ['s3','Кондиционирование МОП',2.07,2.07,41716],
+ ['s3','ОДС, ИТП, АУУТЭ/АСКУВ/АСКУЭ',3.64,3.64,73262],
+ ['s4','Аварийное обслуживание',2.65,2.65,53393],
+ ['s5','ТО автоматических дверей',4.76,4.76,95927],
+ ['s5','Видеонаблюдение',4.54,4.54,91493],
+ ['s5','Домофон (не работает)',3.64,3.64,73356],
+ ['s5','СКУД калитки/двери',2.67,2.67,53808],
+ ['s5','ТО АЗУ',1.90,1.90,38290],
+ ['s5','Диспетчеризация',1.13,1.13,22773],
+ ['s6','Содержание участка',18.57,18.57,374236],
+ ['s6','Вывоз снега (круглый год)',4.00,4.00,80611],
+ ['s6','Ремонт МАФ и благоустройства',3.73,3.73,75190],
+ ['s6','Фасадное и дворовое освещение',3.33,3.33,67108],
+ ['s6','Газоны и цветники',1.60,1.60,32224],
+ ['s7','Управление МКД',9.74,9.74,196287],
+ ['so','2 круглосуточных поста (дом)',42.98,0,813172],
+ ['so','2×24 ч + 1×12 ч поста (паркинг)',0,229.99,283366],
+ ['sm','Целевой взнос 22,31 × 24 мес.',22.31,0,422181],
+ ['su','Интеграция (целевой сбор, 60 мес.)',4.27,4.27,85976],
+ ['su','ТО систем умного дома (не работает)',2.24,2.24,45156],
+ ['su','Облачный ресурс',0.57,0.57,11571],
+];
+const col = {c:'var(--c1)',o:'var(--c2)',m:'var(--c3)',u:'var(--c4)'};
+const fmt = n => n.toLocaleString('ru-RU',{minimumFractionDigits:2,maximumFractionDigits:2});
+const fmt0 = n => n.toLocaleString('ru-RU',{maximumFractionDigits:0});
+let mode='flat';
+function build(){
+  const vi = mode==='flat'?3:4;
+  const svg=document.getElementById('s'); svg.innerHTML='';
+  const W=1300,H=900,nw=12,gap=6;
+  // level1 groups
+  const groups={}; let total=0;
+  sections.forEach(s=>{const v=s[vi]; if(v>0){groups[s[2]]=(groups[s[2]]||0)+v; total+=v;}});
+  const gKeys=['c','o','m','u'].filter(k=>groups[k]>0);
+  const secs=sections.filter(s=>s[vi]>0);
+  const lns=lines.map(l=>({sec:l[0],name:l[1],v:l[vi-1],house:l[4]})).filter(l=>l.v>0);
+  // scale by column with most gaps
+  const usable=H-40;
+  const scale=Math.min((usable-gap*(gKeys.length-1))/total,(usable-gap*(secs.length-1))/total,(usable-gap*(lns.length-1))/total);
+  function layout(items,x){let y=20; const out={}; items.forEach(it=>{const h=it.v*scale; out[it.id]={x,y,h,...it}; y+=h+gap;}); return out;}
+  // 4 columns: total, group, section, line
+  const xs=[8,250,500,790];
+  const A=layout([{id:'T',name:'Итого с 1 м² в месяц',v:total}],xs[0]);
+  const B=layout(gKeys.map(k=>({id:'g'+k,name:S[k],v:groups[k],cat:k})),xs[1]);
+  const C=layout(secs.map(s=>({id:s[0],name:s[1],v:s[vi],cat:s[2]})),xs[2]);
+  const D=layout(lns.map((l,i)=>({id:'l'+i,name:l.name,v:l.v,cat:secs.find(s=>s[0]===l.sec)[2],sec:l.sec,house:l.house})),xs[3]);
+  const links=[];
+  // T->group
+  let oy=A.T.y; gKeys.forEach(k=>{const t=B['g'+k]; links.push({s:A.T,t,sy:oy,ty:t.y,h:t.h,cat:k,name:S[k],v:groups[k]}); oy+=t.h;});
+  // group->section
+  const goff={}; gKeys.forEach(k=>goff[k]=B['g'+k].y);
+  secs.forEach(s=>{const t=C[s[0]]; const g=B['g'+s[2]]; links.push({s:g,t,sy:goff[s[2]],ty:t.y,h:t.h,cat:s[2],name:s[1],v:s[vi]}); goff[s[2]]+=t.h;});
+  // section->line
+  const soff={}; secs.forEach(s=>soff[s[0]]=C[s[0]].y);
+  Object.values(D).forEach(d=>{const s=C[d.sec]; links.push({s,t:d,sy:soff[d.sec],ty:d.y,h:d.h,cat:d.cat,name:d.name,v:d.v,house:d.house}); soff[d.sec]+=d.h;});
+  const ns='http://www.w3.org/2000/svg';
+  const g=document.createElementNS(ns,'g'); svg.appendChild(g);
+  links.forEach(l=>{
+    const x1=l.s.x+nw, x2=l.t.x, c=(x1+x2)/2;
+    const p=document.createElementNS(ns,'path');
+    p.setAttribute('class','link');
+    p.setAttribute('d',`M${x1},${l.sy} C${c},${l.sy} ${c},${l.ty} ${x2},${l.ty} L${x2},${l.ty+l.h} C${c},${l.ty+l.h} ${c},${l.sy+l.h} ${x1},${l.sy+l.h} Z`);
+    p.style.fill=col[l.cat];
+    p.addEventListener('mousemove',e=>tip(e,`<b>${l.name}</b><br>${fmt(l.v)} руб/м² · ${(100*l.v/total).toFixed(1)} % платы${l.house?`<br>по дому: ≈ ${fmt0(l.house)} руб/мес`:''}`));
+    p.addEventListener('mouseleave',hide);
+    g.appendChild(p);
+  });
+  [A,B,C,D].forEach((L,ci)=>{
+    const nodes=Object.values(L).sort((a,b)=>a.y-b.y);
+    // label y positions with collision resolution
+    const minSp = ci===3?12.5:14;
+    let ys=nodes.map(n=>n.y+Math.max(n.h,1)/2);
+    for(let i=1;i<ys.length;i++) if(ys[i]<ys[i-1]+minSp) ys[i]=ys[i-1]+minSp;
+    const over=ys[ys.length-1]-(H-8); if(over>0){ for(let i=ys.length-1;i>=0;i--){ ys[i]-=over; } for(let i=ys.length-2;i>=0;i--) if(ys[i]>ys[i+1]-minSp) ys[i]=ys[i+1]-minSp; }
+    nodes.forEach((n,i)=>{
+      const r=document.createElementNS(ns,'rect'); r.setAttribute('x',n.x); r.setAttribute('y',n.y); r.setAttribute('width',nw); r.setAttribute('height',Math.max(n.h,1)); r.setAttribute('rx',2);
+      r.setAttribute('class','node'); r.style.fill='var(--node)'; g.appendChild(r);
+      const cy=n.y+Math.max(n.h,1)/2, ly=ys[i];
+      if(Math.abs(ly-cy)>2){const ld=document.createElementNS(ns,'line'); ld.setAttribute('x1',n.x+nw); ld.setAttribute('y1',cy); ld.setAttribute('x2',n.x+nw+5); ld.setAttribute('y2',ly); ld.setAttribute('stroke','var(--muted)'); ld.setAttribute('stroke-width','.8'); g.appendChild(ld);}
+      const t=document.createElementNS(ns,'text'); t.setAttribute('class','lbl');
+      t.setAttribute('x', n.x+nw+7); t.setAttribute('y', ly+4);
+      if(ci===3) t.setAttribute('font-size','11');
+      t.innerHTML = `${n.name} <tspan class="v">${fmt(n.v)}</tspan>`;
+      g.appendChild(t);
+    });
+  });
+  // KPI
+  const k=document.getElementById('kpi');
+  const per = mode==='flat' ? {a:'60 м² квартира', m:60} : {a:'машино-место 13,3 м²', m:13.3};
+  k.innerHTML=`<div><b>${fmt(total)} руб/м²</b><small>итого в месяц</small></div>
+  <div><b>${fmt0(total*per.m)} руб</b><small>в месяц за ${per.a}</small></div>
+  <div><b>${fmt(groups.c)} руб/м²</b><small>содержание и текущий ремонт (было 110)</small></div>
+  <div><b>${mode==='flat'?'+45 %':'+330 %'}</b><small>${mode==='flat'?'рост содержания к 110 руб/м²':'содержание м/м к 110 руб/м²'}</small></div>`;
+  // table
+  const tb=document.getElementById('tbl');
+  tb.innerHTML='<tr><th>Раздел</th><th>Строка</th><th>руб/м²</th></tr>'+Object.values(D).map(d=>`<tr><td>${secs.find(s=>s[0]===d.sec)[1]}</td><td>${d.name}</td><td>${fmt(d.v)}</td></tr>`).join('')+`<tr><th colspan="2">Итого</th><th>${fmt(total)}</th></tr>`;
+}
+const tipEl=document.getElementById('tip');
+function tip(e,html){tipEl.innerHTML=html;tipEl.style.display='block';tipEl.style.left=(e.clientX+14)+'px';tipEl.style.top=(e.clientY+14)+'px';}
+function hide(){tipEl.style.display='none';}
+document.getElementById('bFlat').onclick=()=>{mode='flat';set();};
+document.getElementById('bPark').onclick=()=>{mode='park';set();};
+function set(){document.getElementById('bFlat').setAttribute('aria-pressed',mode==='flat');document.getElementById('bPark').setAttribute('aria-pressed',mode==='park');build();}
+build();
+</script>
+</body></html>
